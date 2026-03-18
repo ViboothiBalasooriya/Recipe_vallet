@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login / Sign Up | Digital Recipe Book</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         .login-split { min-height: 100vh; }
         .login-image { background: url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat; }
@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col-lg-6 d-flex align-items-center justify-content-center p-5 bg-white">
                 <div class="login-form-container reveal active">
                     <div class="mb-5">
-                        <a href="../index.php" class="text-decoration-none text-success fw-bold fs-4 mb-4 d-inline-block">🍴 RecipeBook</a>
+                        <a href="../index.php" class="text-decoration-none text-success fw-bold fs-4 mb-4 d-inline-block">ðŸ´ RecipeBook</a>
                         <h1 class="fw-bold mb-2" id="authTitle">Welcome Back</h1>
                         <p class="text-muted" id="authSub">Sign in to your account to continue your culinary journey.</p>
                     </div>
@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="mb-4">
                             <label class="form-label small fw-bold text-uppercase">Password</label>
-                            <input type="password" name="login_password" class="form-control bg-light border-0 py-3" placeholder="••••••••" required>
+                            <input type="password" name="login_password" class="form-control bg-light border-0 py-3" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
                         </div>
                         <button type="submit" class="btn btn-success w-100 py-3 mb-4 shadow-sm">Sign In</button>
                     </form>
@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="mb-4">
                             <label class="form-label small fw-bold text-uppercase">Password</label>
-                            <input type="password" name="password" class="form-control bg-light border-0 py-3" placeholder="••••••••" required>
+                            <input type="password" name="password" class="form-control bg-light border-0 py-3" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required>
                         </div>
                         <button type="submit" class="btn btn-success w-100 py-3 mb-4 shadow-sm">Join RecipeBook</button>
                     </form>
@@ -137,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="h-100 w-100 d-flex align-items-end p-5" style="background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);">
                     <div class="text-white">
                         <h2 class="display-6 fw-bold mb-3">"Cooking is like love. It should be entered into with abandon or not at all."</h2>
-                        <p class="fs-5 opacity-75">— Harriet van Horne</p>
+                        <p class="fs-5 opacity-75">â€” Harriet van Horne</p>
                     </div>
                 </div>
             </div>

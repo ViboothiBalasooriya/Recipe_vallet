@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
@@ -20,7 +20,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3">
         <div class="container">
-            <a class="navbar-brand fw-bold text-success" href="index.php">🍴 RecipeBook</a>
+            <a class="navbar-brand fw-bold text-success" href="index.php">ðŸ´ RecipeBook</a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
@@ -142,9 +142,9 @@
                     <div class="col-md-6 mb-4">
                         <h5 class="fw-bold mb-3">Quick Info</h5>
                         <div class="d-flex gap-3 text-muted small">
-                            <span>⏱ 20m prep</span>
-                            <span>🔥 350 kcal</span>
-                            <span>🥗 Vegan</span>
+                            <span>â± 20m prep</span>
+                            <span>ðŸ”¥ 350 kcal</span>
+                            <span>ðŸ¥— Vegan</span>
                         </div>
                     </div>
                 </div>
@@ -178,8 +178,8 @@
                 <p class="text-muted mb-0">Hand-picked collections for your next culinary adventure</p>
             </div>
             <div class="d-none d-md-block">
-                <button class="btn btn-outline-dark rounded-circle me-2">❮</button>
-                <button class="btn btn-outline-dark rounded-circle">❯</button>
+                <button class="btn btn-outline-dark rounded-circle me-2">â®</button>
+                <button class="btn btn-outline-dark rounded-circle">â¯</button>
             </div>
         </div>
 
@@ -196,9 +196,9 @@
                             afternoons.</p>
                         <hr class="my-3 opacity-10">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted small"><i class="bi bi-clock me-1"></i>⏱ 15 mins</span>
+                            <span class="text-muted small"><i class="bi bi-clock me-1"></i>â± 15 mins</span>
                             <a href="#" class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Recipe
-                                →</a>
+                                â†’</a>
                         </div>
                     </div>
                 </div>
@@ -210,15 +210,15 @@
                     <img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=800&q=80"
                         class="card-img-top" alt="Authentic Italian Classics">
                     <div class="card-body">
-                        <span class="badge bg-primary-subtle text-primary mb-2">Chef’s Choice</span>
+                        <span class="badge bg-primary-subtle text-primary mb-2">Chefâ€™s Choice</span>
                         <h4 class="card-title fw-bold">Authentic Italian Classics</h4>
                         <p class="text-muted small">Traditional recipes passed down through generations. The soul of
                             Italy in your kitchen.</p>
                         <hr class="my-3 opacity-10">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted small"><i class="bi bi-clock me-1"></i>⏱ 45 mins</span>
+                            <span class="text-muted small"><i class="bi bi-clock me-1"></i>â± 45 mins</span>
                             <a href="#" class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Recipe
-                                →</a>
+                                â†’</a>
                         </div>
                     </div>
                 </div>
@@ -236,9 +236,9 @@
                             cravings.</p>
                         <hr class="my-3 opacity-10">
                         <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted small"><i class="bi bi-clock me-1"></i>⏱ 60 mins</span>
+                            <span class="text-muted small"><i class="bi bi-clock me-1"></i>â± 60 mins</span>
                             <a href="#" class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Recipe
-                                →</a>
+                                â†’</a>
                         </div>
                     </div>
                 </div>
@@ -311,13 +311,13 @@
                 <a href="submit-recipe.php" class="text-decoration-none text-muted mx-2 small">Submit</a>
                 <a href="about.php" class="text-decoration-none text-muted mx-2 small">About</a>
             </div>
-            <p class="text-muted small mb-0">© 2026 RecipeBook. Powered by Culinary Passion & Rajarata University.</p>
+            <p class="text-muted small mb-0">Â© 2026 RecipeBook. Powered by Culinary Passion & Rajarata University.</p>
         </div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="js/script.js?v=3"></script>
 </body>
 
 </html>

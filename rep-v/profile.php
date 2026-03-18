@@ -39,7 +39,7 @@ $recipes = $stmt->fetchAll();
     <title><?php echo htmlspecialchars($username); ?> | Digital Recipe Book</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
@@ -48,7 +48,7 @@ $recipes = $stmt->fetchAll();
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3">
         <div class="container">
-            <a class="navbar-brand fw-bold text-success" href="index.php">🍴 RecipeBook</a>
+            <a class="navbar-brand fw-bold text-success" href="index.php">ðŸ´ RecipeBook</a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -102,7 +102,7 @@ $recipes = $stmt->fetchAll();
                             <hr class="my-3 opacity-10">
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="badge bg-success-subtle text-success"><?php echo htmlspecialchars($recipe['category'] ?? 'General'); ?></span>
-                                <a href="recipes.php" class="btn btn-link text-success p-0 text-decoration-none fw-bold">Explore Content →</a>
+                                <a href="recipes.php" class="btn btn-link text-success p-0 text-decoration-none fw-bold">Explore Content â†’</a>
                             </div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@ $recipes = $stmt->fetchAll();
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js?v=2"></script>
+    <script src="js/script.js?v=3"></script>
 </body>
 
 </html>

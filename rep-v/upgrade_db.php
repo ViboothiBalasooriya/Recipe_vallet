@@ -18,12 +18,12 @@ try {
     // 1. Alter Users Table safely
     addColumnSafe($pdo, 'users', 'profile_photo VARCHAR(255) DEFAULT NULL');
     addColumnSafe($pdo, 'users', 'profile_views INT DEFAULT 0');
-    echo "<p>✅ Successfully updated <strong>users</strong> table.</p>";
+    echo "<p>âœ… Successfully updated <strong>users</strong> table.</p>";
 
     // 2. Alter Recipes Table
     addColumnSafe($pdo, 'recipes', "category VARCHAR(100) DEFAULT 'Uncategorized'");
     addColumnSafe($pdo, 'recipes', 'prep_time INT DEFAULT 30');
-    echo "<p>✅ Successfully updated <strong>recipes</strong> table.</p>";
+    echo "<p>âœ… Successfully updated <strong>recipes</strong> table.</p>";
 
     // 3. Create Favorites Table
     $pdo->exec("CREATE TABLE IF NOT EXISTS favorites (
@@ -35,7 +35,7 @@ try {
         FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE,
         UNIQUE KEY user_recipe (user_id, recipe_id)
     )");
-    echo "<p>✅ Successfully created <strong>favorites</strong> table.</p>";
+    echo "<p>âœ… Successfully created <strong>favorites</strong> table.</p>";
 
     echo "<h3 style='color: green;'>All database updates applied successfully! You may now return to the app.</h3>";
 } catch (PDOException $e) {
