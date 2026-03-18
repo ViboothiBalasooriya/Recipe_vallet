@@ -8,16 +8,29 @@ $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = sanitize_input($_POST['recipeTitle']);
+    $category = sanitize_input($_POST['category']);
     $ingredients = sanitize_input($_POST['ingredients']);
     $instructions = sanitize_input($_POST['instructions']);
     $user_id = $_SESSION['user_id'];
-    // For simplicity, we skip image upload in this phase unless specified
+    
+    $image_url = null;
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $upload_dir = 'img/uploads/';
+        if (!is_dir($upload_dir)) {
+            mkdir($upload_dir, 0777, true);
+        }
+        $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+        $filename = uniqid('recipe_') . '.' . $ext;
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $filename)) {
+            $image_url = $upload_dir . $filename;
+        }
+    }
 
-    if (empty($title) || empty($ingredients) || empty($instructions)) {
+    if (empty($title) || empty($ingredients) || empty($instructions) || empty($category)) {
         $error = "Please fill in all required fields.";
     } else {
-        $stmt = $pdo->prepare("INSERT INTO recipes (title, ingredients, instructions, user_id) VALUES (?, ?, ?, ?)");
-        if ($stmt->execute([$title, $ingredients, $instructions, $user_id])) {
+        $stmt = $pdo->prepare("INSERT INTO recipes (title, category, ingredients, instructions, image_url, user_id) VALUES (?, ?, ?, ?, ?, ?)");
+        if ($stmt->execute([$title, $category, $ingredients, $instructions, $image_url, $user_id])) {
             $success = "Recipe submitted successfully!";
         } else {
             $error = "Failed to submit recipe.";
@@ -115,18 +128,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="alert alert-success"><?php echo $success; ?></div>
                         <?php endif; ?>
 
-                        <form method="POST" action="submit-recipe.php">
+                        <form method="POST" action="submit-recipe.php" enctype="multipart/form-data">
                             <div class="mb-4">
-                                <label class="form-label fw-bold small text-uppercase tracking-wider">Recipe
-                                    Title</label>
-                                <input type="text" name="recipeTitle"
-                                    class="form-control form-control-lg bg-light border-0 shadow-none"
-                                    placeholder="e.g. Grandma's Apple Pie" required>
+                                <label class="form-label fw-bold small text-uppercase tracking-wider">Recipe Image</label>
+                                <input type="file" name="image" class="form-control bg-light border-0 shadow-none" accept="image/*">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fw-bold small text-uppercase tracking-wider">Recipe Title</label>
+                                <input type="text" name="recipeTitle" class="form-control form-control-lg bg-light border-0 shadow-none" placeholder="e.g. Grandma's Apple Pie" required>
                             </div>
 
                             <div class="mb-4">
-                                <label
-                                    class="form-label fw-bold small text-uppercase tracking-wider">Ingredients</label>
+                                <label class="form-label fw-bold small text-uppercase tracking-wider">Category</label>
+                                <select name="category" class="form-select form-select-lg bg-light border-0 shadow-none" required>
+                                    <option value="" disabled selected>Select a category...</option>
+                                    <option value="Breakfast">Breakfast</option>
+                                    <option value="Dinner">Dinner</option>
+                                    <option value="Vegetarian">Vegetarian</option>
+                                    <option value="Dessert">Dessert</option>
+                                    <option value="General">General / Other</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold small text-uppercase tracking-wider">Ingredients</label>
                                 <textarea name="ingredients" class="form-control bg-light border-0 shadow-none" rows="4"
                                     placeholder="List ingredients separated by lines..." required></textarea>
                             </div>
@@ -162,7 +187,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
 
 </html>

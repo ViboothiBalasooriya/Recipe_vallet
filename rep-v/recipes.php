@@ -74,124 +74,8 @@
 
     <!-- GRID -->
     <section class="container py-5">
-        <div class="row g-4">
-            <!-- Recipe 1 -->
-            <div class="col-md-6 col-lg-4 reveal">
-                <div class="card recipe-card shadow-sm h-100">
-                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=80"
-                        class="card-img-top" alt="Classic Pancakes">
-                    <div class="card-body">
-                        <span class="badge bg-success-subtle text-success mb-2">Breakfast</span>
-                        <h4 class="card-title fw-bold">Classic Honey Pancakes</h4>
-                        <p class="text-muted small">Fluffy, golden pancakes served with organic honey and fresh berries.
-                        </p>
-                        <hr class="my-3 opacity-10">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted small">⏱ 20 mins</span>
-                            <a href="javascript:void(0)" onclick="openRecipeDetails(0)"
-                                class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Details →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recipe 2 -->
-            <div class="col-md-6 col-lg-4 reveal">
-                <div class="card recipe-card shadow-sm h-100">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80"
-                        class="card-img-top" alt="Garden Salad">
-                    <div class="card-body">
-                        <span class="badge bg-success-subtle text-success mb-2">Vegetarian</span>
-                        <h4 class="card-title fw-bold">Signature Harvest Bowl</h4>
-                        <p class="text-muted small">A vibrant blend of seasonal greens and zesty tahini dressing.</p>
-                        <hr class="my-3 opacity-10">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted small">⏱ 15 mins</span>
-                            <a href="javascript:void(0)" onclick="openRecipeDetails(1)"
-                                class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Details →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recipe 3 -->
-            <div class="col-md-6 col-lg-4 reveal">
-                <div class="card recipe-card shadow-sm h-100">
-                    <img src="https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=800&q=80"
-                        class="card-img-top" alt="Lava Cake">
-                    <div class="card-body">
-                        <span class="badge bg-warning-subtle text-warning mb-2">Dessert</span>
-                        <h4 class="card-title fw-bold">Dark Chocolate Lava</h4>
-                        <p class="text-muted small">Molten dark chocolate center with a hint of sea salt and vanilla
-                            bean.</p>
-                        <hr class="my-3 opacity-10">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted small">⏱ 40 mins</span>
-                            <a href="javascript:void(0)" onclick="openRecipeDetails(2)"
-                                class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Details →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recipe 4 -->
-            <div class="col-md-6 col-lg-4 reveal">
-                <div class="card recipe-card shadow-sm h-100">
-                    <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=800&q=80"
-                        class="card-img-top" alt="Mushroom Risotto">
-                    <div class="card-body">
-                        <span class="badge bg-primary-subtle text-primary mb-2">Dinner</span>
-                        <h4 class="card-title fw-bold">Creamy Mushroom Risotto</h4>
-                        <p class="text-muted small">Slow-cooked Arborio rice with wild mushrooms and truffle oil.</p>
-                        <hr class="my-3 opacity-10">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted small">⏱ 45 mins</span>
-                            <a href="javascript:void(0)" onclick="openRecipeDetails(3)"
-                                class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Details →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recipe 5 -->
-            <div class="col-md-6 col-lg-4 reveal">
-                <div class="card recipe-card shadow-sm h-100">
-                    <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&w=800&q=80"
-                        class="card-img-top" alt="Thai Curry">
-                    <div class="card-body">
-                        <span class="badge bg-primary-subtle text-primary mb-2">Dinner</span>
-                        <h4 class="card-title fw-bold">Spicy Thai Green Curry</h4>
-                        <p class="text-muted small">A fragrant blend of green chillies, lemongrass, and coconut milk.
-                        </p>
-                        <hr class="my-3 opacity-10">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted small">⏱ 30 mins</span>
-                            <a href="javascript:void(0)" onclick="openRecipeDetails(4)"
-                                class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Details →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recipe 6 -->
-            <div class="col-md-6 col-lg-4 reveal">
-                <div class="card recipe-card shadow-sm h-100">
-                    <img src="https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=800&q=80"
-                        class="card-img-top" alt="Berry Tart">
-                    <div class="card-body">
-                        <span class="badge bg-warning-subtle text-warning mb-2">Dessert</span>
-                        <h4 class="card-title fw-bold">Summer Berry Tart</h4>
-                        <p class="text-muted small">Crispy pastry shell filled with vanilla custard and seasonal
-                            berries.</p>
-                        <hr class="my-3 opacity-10">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span class="text-muted small">⏱ 60 mins</span>
-                            <a href="javascript:void(0)" onclick="openRecipeDetails(5)"
-                                class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Details →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="row g-4" id="recipeGrid">
+            <!-- Dynamically populated via script.js -->
         </div>
     </section>
 
@@ -209,7 +93,11 @@
                         </div>
                         <div class="col-md-7">
                             <span id="modalCategory" class="badge bg-success-subtle text-success mb-2">Category</span>
-                            <h2 id="modalTitle" class="display-6 fw-bold mb-3">Recipe Title</h2>
+                            <h2 id="modalTitle" class="display-6 fw-bold mb-2">Recipe Title</h2>
+                            <p class="mb-4 small">
+                                <span class="text-muted me-1">By</span>
+                                <a id="modalChefLink" href="#" class="text-success text-decoration-none fw-bold"><i class="fas fa-user-circle me-1"></i><span id="modalChefName">Chef</span></a>
+                            </p>
                             <p id="modalDesc" class="text-muted mb-4">Description of the recipe goes here...</p>
 
                             <h5 class="fw-bold mb-3">Ingredients</h5>
@@ -242,7 +130,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
 
 </html>

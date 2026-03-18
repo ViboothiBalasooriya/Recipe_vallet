@@ -1,54 +1,5 @@
 // ✅ Global Recipe Data (Feature 2 - Dynamic Content)
-const recipesData = [
-    {
-        title: "Classic Honey Pancakes",
-        category: "Breakfast",
-        desc: "Fluffy, golden pancakes served with organic honey and fresh berries.",
-        ingredients: ["2 cups Flour", "1 cup Milk", "2 Eggs", "3 tbsp Honey"],
-        steps: "1. Mix dry ingredients. 2. Whisk wet ingredients. 3. Cook on griddle until bubbles form.",
-        img: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445"
-    },
-    {
-        title: "Signature Harvest Bowl",
-        category: "Vegetarian",
-        desc: "A vibrant blend of seasonal greens and zesty tahini dressing.",
-        ingredients: ["Kale", "Quinoa", "Sweet Potato", "Tahini"],
-        steps: "1. Roast potatoes. 2. Massage kale. 3. Combine and drizzle dressing.",
-        img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c"
-    },
-    {
-        title: "Dark Chocolate Lava",
-        category: "Dessert",
-        desc: "Molten dark chocolate center with a hint of sea salt and vanilla bean.",
-        ingredients: ["Dark Chocolate", "Butter", "Sugar", "Vanilla"],
-        steps: "1. Melt chocolate. 2. Fold in egg mixture. 3. Bake for 12 mins until firm edges.",
-        img: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51"
-    },
-    {
-        title: "Creamy Mushroom Risotto",
-        category: "Dinner",
-        desc: "Slow-cooked Arborio rice with wild mushrooms and truffle oil.",
-        ingredients: ["Arborio Rice", "Mushrooms", "Parmesan", "Truffle Oil"],
-        steps: "1. Sauté mushrooms. 2. Gradually add broth to rice. 3. Stir in cheese and oil.",
-        img: "https://images.unsplash.com/photo-1476124369491-e7addf5db371"
-    },
-    {
-        title: "Spicy Thai Green Curry",
-        category: "Dinner",
-        desc: "A fragrant blend of green chillies, lemongrass, and coconut milk.",
-        ingredients: ["Thai Green Curry Paste", "Coconut Milk", "Chicken/Tofu", "Bamboo Shoots"],
-        steps: "1. Fry curry paste. 2. Add coconut milk and protein. 3. Simmer with bamboo shoots.",
-        img: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd"
-    },
-    {
-        title: "Summer Berry Tart",
-        category: "Dessert",
-        desc: "Crispy pastry shell filled with vanilla custard and seasonal berries.",
-        ingredients: ["Pastry Crust", "Vanilla Custard", "Mixed Berries", "Apricot Glaze"],
-        steps: "1. Bake crust. 2. Fill with custard. 3. Decorate with berries and glaze.",
-        img: "https://images.unsplash.com/photo-1519915028121-7d3463d20b13"
-    }
-];
+const recipesData = [];
 
 // ✅ Function to Open Modal Dynamically (Feature 2)
 function openRecipeDetails(index) {
@@ -56,9 +7,12 @@ function openRecipeDetails(index) {
     if (!recipe) return;
 
     document.getElementById("modalTitle").innerText = recipe.title;
-    document.getElementById("modalImg").src = recipe.img + "?auto=format&fit=crop&w=800&q=80";
+    document.getElementById("modalImg").src = recipe.img.startsWith('http') ? recipe.img + "?auto=format&fit=crop&w=800&q=80" : recipe.img;
     document.getElementById("modalCategory").innerText = recipe.category;
     document.getElementById("modalDesc").innerText = recipe.desc;
+    
+    document.getElementById("modalChefName").innerText = recipe.chef_name || "Unknown Chef";
+    document.getElementById("modalChefLink").href = "profile.php?id=" + recipe.user_id;
 
     // Populate Ingredients
     const ingList = document.getElementById("modalIngredients");
@@ -73,7 +27,80 @@ function openRecipeDetails(index) {
     bModal.show();
 }
 
+// ✅ Feature: Toggle Favorite
+window.toggleFavorite = function(recipeId, btnElement) {
+    const icon = btnElement.querySelector('i');
+    
+    fetch('api_toggle_favorite.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ recipe_id: recipeId })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === 'success') {
+            if (data.action === 'added') {
+                icon.classList.remove('fa-regular', 'text-muted');
+                icon.classList.add('fa-solid', 'text-danger');
+            } else {
+                icon.classList.remove('fa-solid', 'text-danger');
+                icon.classList.add('fa-regular', 'text-muted');
+            }
+        } else if (data.message === 'Not logged in') {
+            alert("Please log in to save favorites!");
+            window.location.href = "auth/login.php";
+        }
+    })
+    .catch(err => console.error("Error toggling favorite:", err));
+};
+
 document.addEventListener("DOMContentLoaded", function () {
+    // Dynamically load recipes from the API for rep-v
+    const recipeGrid = document.getElementById("recipeGrid");
+    if (recipeGrid) {
+        fetch('get_recipes.php')
+            .then(response => response.json())
+            .then(data => {
+                if (Array.isArray(data)) {
+                    data.forEach((recipe) => {
+                        const index = recipesData.length;
+                        recipesData.push(recipe);
+                        
+                        const cardHTML = `
+                        <div class="col-md-6 col-lg-4 reveal active">
+                            <div class="card recipe-card shadow-sm h-100">
+                                <img src="${recipe.img.startsWith('http') ? recipe.img + '?auto=format&fit=crop&w=800&q=80' : recipe.img}"
+                                    class="card-img-top" alt="${recipe.title}">
+                                <div class="card-body">
+                                    <span class="badge bg-success-subtle text-success mb-2">${recipe.category}</span>
+                                    <h4 class="card-title fw-bold">${recipe.title}</h4>
+                                    <p class="text-muted small">${recipe.desc}</p>
+                                    <hr class="my-3 opacity-10">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-muted small">⏱ ${recipe.prepTime} mins</span>
+                                        <div>
+                                            <button onclick="toggleFavorite(${recipe.id}, this)" class="btn btn-light rounded-circle shadow-sm me-2">
+                                                <i class="${recipe.isFavorited ? 'fa-solid text-danger' : 'fa-regular text-muted'} fa-heart"></i>
+                                            </button>
+                                            <a href="javascript:void(0)" onclick="openRecipeDetails(${index})"
+                                                class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Details →</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                        recipeGrid.insertAdjacentHTML("beforeend", cardHTML);
+                    });
+                }
+            })
+            .catch(err => {
+                console.error("Error tracking API response:", err);
+                fetch('get_recipes.php')
+                    .then(r => r.text())
+                    .then(t => console.error("Raw server response:", t));
+            });
+    }
+
     // Reveal Observer
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
