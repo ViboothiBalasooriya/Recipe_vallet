@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Contact Us | Digital Recipe Book</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3">
         <div class="container">
-            <a class="navbar-brand fw-bold text-success" href="index.php">🍴 RecipeBook</a>
+            <a class="navbar-brand fw-bold text-success" href="index.php">ðŸ´ RecipeBook</a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -117,12 +117,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a href="about.php" class="text-decoration-none text-muted mx-2 small">About</a>
                 <a href="contact.php" class="text-decoration-none text-muted mx-2 small">Contact</a>
             </div>
-            <p class="text-muted small mb-0">© 2026 RecipeBook. Powered by Culinary Passion & Rajarata University.</p>
+            <p class="text-muted small mb-0">Â© 2026 RecipeBook. Powered by Culinary Passion & Rajarata University.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="js/script.js?v=3"></script>
 </body>
 </html>
 

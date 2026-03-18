@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
@@ -20,7 +20,7 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3">
         <div class="container">
-            <a class="navbar-brand fw-bold text-success" href="index.php">🍴 RecipeBook</a>
+            <a class="navbar-brand fw-bold text-success" href="index.php">ðŸ´ RecipeBook</a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
@@ -69,12 +69,12 @@
                         shared, celebrated, and preserved for the next generation of chefs.</p>
                     <div class="row g-4">
                         <div class="col-md-6">
-                            <h5 class="fw-bold"><i class="text-success me-2">✔</i> Global Community</h5>
+                            <h5 class="fw-bold"><i class="text-success me-2">âœ”</i> Global Community</h5>
                             <p class="small text-muted">A platform for food lovers worldwide to exchange their secret
                                 ingredients.</p>
                         </div>
                         <div class="col-md-6">
-                            <h5 class="fw-bold"><i class="text-success me-2">✔</i> Premium UX</h5>
+                            <h5 class="fw-bold"><i class="text-success me-2">âœ”</i> Premium UX</h5>
                             <p class="small text-muted">A seamless, interactive experience designed for modern kitchens.
                             </p>
                         </div>
@@ -211,13 +211,13 @@
                 <a href="submit-recipe.php" class="text-decoration-none text-muted mx-2 small">Submit</a>
                 <a href="about.php" class="text-decoration-none text-muted mx-2 small">About</a>
             </div>
-            <p class="text-muted small mb-0">© 2026 RecipeBook. Powered by Culinary Passion & Rajarata University.</p>
+            <p class="text-muted small mb-0">Â© 2026 RecipeBook. Powered by Culinary Passion & Rajarata University.</p>
         </div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="js/script.js?v=3"></script>
 </body>
 
 </html>

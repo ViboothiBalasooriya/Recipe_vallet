@@ -8,7 +8,7 @@ $username = $_SESSION['username'] ?? 'User';
 
 // Handle Profile Photo Upload
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_photo']) && $_FILES['profile_photo']['error'] === UPLOAD_ERR_OK) {
-    $upload_dir = 'img/avatars/';
+    $upload_dir = 'images/avatars/';
     if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
     
     $ext = pathinfo($_FILES['profile_photo']['name'], PATHINFO_EXTENSION);
@@ -54,7 +54,7 @@ $favorites = $stmt->fetchAll();
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
@@ -64,7 +64,7 @@ $favorites = $stmt->fetchAll();
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3">
         <div class="container">
-            <a class="navbar-brand fw-bold text-success" href="index.php">🍴 RecipeBook</a>
+            <a class="navbar-brand fw-bold text-success" href="index.php">ðŸ´ RecipeBook</a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
@@ -201,7 +201,7 @@ $favorites = $stmt->fetchAll();
                             <hr class="my-3 opacity-10">
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="badge bg-success-subtle text-success"><?php echo htmlspecialchars($recipe['category'] ?? 'General'); ?></span>
-                                <a href="recipes.php" class="btn btn-link text-success p-0 text-decoration-none fw-bold">View →</a>
+                                <a href="recipes.php" class="btn btn-link text-success p-0 text-decoration-none fw-bold">View â†’</a>
                             </div>
                         </div>
                     </div>
@@ -242,13 +242,13 @@ $favorites = $stmt->fetchAll();
                 <a href="submit-recipe.php" class="text-decoration-none text-muted mx-2 small">Submit</a>
                 <a href="about.php" class="text-decoration-none text-muted mx-2 small">About</a>
             </div>
-            <p class="text-muted small mb-0">© 2026 RecipeBook. Powered by Culinary Passion & Rajarata University.</p>
+            <p class="text-muted small mb-0">Â© 2026 RecipeBook. Powered by Culinary Passion & Rajarata University.</p>
         </div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="js/script.js?v=3"></script>
 </body>
 
 </html>
