@@ -1,0 +1,323 @@
+<?php require_once 'includes/functions.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Recipe Book | Interactive Web Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-success" href="index.php">🍴 RecipeBook</a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link fw-medium active" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="recipes.php">Recipes</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="submit-recipe.php">Submit Recipe</a></li>
+                    <li class="nav-item"><a class="nav-link fw-medium" href="about.php">About</a></li>
+                    <?php if (is_logged_in()): ?>
+                    <li class="nav-item ms-lg-3"><a class="btn btn-outline-success btn-sm px-4 rounded-pill shadow-sm mt-2 mt-lg-0" href="dashboard.php">Dashboard</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-danger btn-sm px-4 rounded-pill shadow-sm mt-2 mt-lg-0" href="auth/logout.php">Logout</a></li>
+                <?php else: ?>
+                    <li class="nav-item ms-lg-3"><a class="btn btn-success btn-sm px-4 rounded-pill shadow-sm mt-2 mt-lg-0" href="auth/login.php">Get Started</a></li>
+                <?php endif; ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section text-center text-white">
+        <!-- Removed 'reveal' class to ensure hero is visible immediately -->
+        <div class="container hero-content">
+            <span class="badge bg-success-subtle text-success border border-success mb-3">#1 Kitchen Companion</span>
+            <h1 class="display-3 fw-bold">Discover Delicious <br><span class="text-success">Recipes</span> Every Day
+            </h1>
+            <p class="lead mb-5 opacity-75">Your personal culinary guide for crafting extraordinary meals <br>with
+                passion and simplicity.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="recipes.php" class="btn btn-success btn-lg px-5">Explore Recipes</a>
+                <a href="submit-recipe.php" class="btn btn-outline-light btn-lg px-5">Submit Yours</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED RECIPE CAROUSEL (NEW FEATURE 4) -->
+    <section class="container my-5 py-5 reveal">
+        <div class="text-center mb-5">
+            <h2 class="display-5 fw-bold">Daily <span class="text-success">Inspirations</span></h2>
+            <p class="text-muted">Explore our hand-picked recipes of the week.</p>
+        </div>
+
+        <div id="recipeCarousel" class="carousel slide shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#recipeCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#recipeCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#recipeCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&h=600&q=80"
+                        class="d-block w-100" alt="Special Bowl">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-4 mb-4">
+                        <h3 class="fw-bold">Signature Harvest Bowl</h3>
+                        <p>A vibrant blend of seasonal greens and zesty dressing.</p>
+                        <a href="recipes.php" class="btn btn-success">View Recipe</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=1200&h=600&q=80"
+                        class="d-block w-100" alt="Pancakes">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-4 mb-4">
+                        <h3 class="fw-bold">Classic Honey Pancakes</h3>
+                        <p>Fluffy perfection served with organic maple syrup.</p>
+                        <a href="recipes.php" class="btn btn-success">View Recipe</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=1200&h=600&q=80"
+                        class="d-block w-100" alt="Dessert">
+                    <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-4 p-4 mb-4">
+                        <h3 class="fw-bold">Dark Chocolate Glaze</h3>
+                        <p>Rich, molten chocolate experience for the soul.</p>
+                        <a href="recipes.php" class="btn btn-success">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#recipeCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#recipeCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <!-- FEATURED RECIPE OF THE DAY (UNCHANGED SECTION) -->
+    <section class="container my-5 py-5 reveal">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=80"
+                        class="img-fluid rounded-4 shadow-lg" alt="Signature Healthy Bowl">
+                    <div class="position-absolute bottom-0 start-0 m-4">
+                        <span class="badge bg-success shadow-lg p-3">Recipe of the Day</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="display-5 fw-bold mb-3">Signature Garden <br><span class="text-success">Harvest Bowl</span>
+                </h2>
+                <p class="text-muted lead mb-4">A vibrant blend of seasonal greens, roasted root vegetables, and our
+                    secret zesty tahini dressing.</p>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <h5 class="fw-bold mb-3">Ingredients</h5>
+                        <ul class="list-unstyled ingredients-list">
+                            <li><input type="checkbox" class="form-check-input me-2"> 2 cups Organic Kale</li>
+                            <li><input type="checkbox" class="form-check-input me-2"> 1 Roasted Sweet Potato</li>
+                            <li><input type="checkbox" class="form-check-input me-2"> 1/2 Avocado (Sliced)</li>
+                            <li><input type="checkbox" class="form-check-input me-2"> 1/4 cup Quinoa</li>
+                            <li><input type="checkbox" class="form-check-input me-2"> Zesty Tahini Dressing</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <h5 class="fw-bold mb-3">Quick Info</h5>
+                        <div class="d-flex gap-3 text-muted small">
+                            <span>⏱ 20m prep</span>
+                            <span>🔥 350 kcal</span>
+                            <span>🥗 Vegan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="instructions-section">
+                    <h5 class="fw-bold mb-3">Steps to Perfection</h5>
+                    <div class="instruction-step mb-3">
+                        <span class="step-number text-success fw-bold me-2">01.</span>
+                        <span class="text-muted">Massage the kale with a touch of olive oil until tender and bright
+                            green.</span>
+                    </div>
+                    <div class="instruction-step mb-3">
+                        <span class="step-number text-success fw-bold me-2">02.</span>
+                        <span class="text-muted">Arrange roasted sweet potatoes and cooked quinoa over the base.</span>
+                    </div>
+                    <div class="instruction-step mb-3">
+                        <span class="step-number text-success fw-bold me-2">03.</span>
+                        <span class="text-muted">Drizzle generously with tahini dressing and top with fresh
+                            avocado.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED SECTION (Carousel or Grid) -->
+    <section class="container my-5 py-5" id="recipes">
+        <div class="d-flex justify-content-between align-items-end mb-5 reveal">
+            <div>
+                <h2 class="fw-bold display-6">Featured Inspiration</h2>
+                <p class="text-muted mb-0">Hand-picked collections for your next culinary adventure</p>
+            </div>
+            <div class="d-none d-md-block">
+                <button class="btn btn-outline-dark rounded-circle me-2">❮</button>
+                <button class="btn btn-outline-dark rounded-circle">❯</button>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- CARD 1 -->
+            <div class="col-md-4 reveal">
+                <div class="card recipe-card shadow-sm h-100">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80"
+                        class="card-img-top" alt="Healthy Summer Bowls">
+                    <div class="card-body">
+                        <span class="badge bg-success-subtle text-success mb-2">Trending</span>
+                        <h4 class="card-title fw-bold">Healthy Summer Bowls</h4>
+                        <p class="text-muted small">Fresh, vibrant, and packed with nutrients. Perfect for those sunny
+                            afternoons.</p>
+                        <hr class="my-3 opacity-10">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted small"><i class="bi bi-clock me-1"></i>⏱ 15 mins</span>
+                            <a href="#" class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Recipe
+                                →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="col-md-4 reveal">
+                <div class="card recipe-card shadow-sm h-100">
+                    <img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=800&q=80"
+                        class="card-img-top" alt="Authentic Italian Classics">
+                    <div class="card-body">
+                        <span class="badge bg-primary-subtle text-primary mb-2">Chef’s Choice</span>
+                        <h4 class="card-title fw-bold">Authentic Italian Classics</h4>
+                        <p class="text-muted small">Traditional recipes passed down through generations. The soul of
+                            Italy in your kitchen.</p>
+                        <hr class="my-3 opacity-10">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted small"><i class="bi bi-clock me-1"></i>⏱ 45 mins</span>
+                            <a href="#" class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Recipe
+                                →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="col-md-4 reveal">
+                <div class="card recipe-card shadow-sm h-100">
+                    <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80"
+                        class="card-img-top" alt="Sweet Treats">
+                    <div class="card-body">
+                        <span class="badge bg-warning-subtle text-warning mb-2">Popular</span>
+                        <h4 class="card-title fw-bold">Sweet Treats</h4>
+                        <p class="text-muted small">Indulgent desserts crafted for every occasion. Satisfy your sweetest
+                            cravings.</p>
+                        <hr class="my-3 opacity-10">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted small"><i class="bi bi-clock me-1"></i>⏱ 60 mins</span>
+                            <a href="#" class="btn btn-link text-success p-0 text-decoration-none fw-bold">View Recipe
+                                →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="bg-light py-5">
+        <div class="container py-5 reveal">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold display-6">How It Works</h2>
+                <p class="text-muted">Mastering the kitchen has never been this easy.</p>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="card border-0 bg-transparent">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4 mx-auto"
+                            style="width: 80px; height: 80px; font-size: 2rem;">1</div>
+                        <h4 class="fw-bold">Pick a Recipe</h4>
+                        <p class="text-muted">Browse our curated collection of thousands of unique dishes.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 bg-transparent">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4 mx-auto"
+                            style="width: 80px; height: 80px; font-size: 2rem;">2</div>
+                        <h4 class="fw-bold">Follow Steps</h4>
+                        <p class="text-muted">Interactive instructions and video guides for every meal.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 bg-transparent">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-4 mx-auto"
+                            style="width: 80px; height: 80px; font-size: 2rem;">3</div>
+                        <h4 class="fw-bold">Share Joy</h4>
+                        <p class="text-muted">Snap a photo and share your culinary creation with the world.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER SECTION -->
+    <section class="container mb-5 reveal">
+        <div class="newsletter-section text-center text-white p-5">
+            <h2 class="fw-bold mb-3">Hungry for more?</h2>
+            <p class="opacity-75 mb-4">Join 20,000+ food enthusiasts and get exclusive weekly recipes <br>delivered
+                straight to your inbox.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <input type="email"
+                            class="form-control form-control-lg bg-transparent text-white border-white-50"
+                            placeholder="Enter your email" style="color: white;">
+                        <button class="btn btn-success btn-lg px-4 border-0">Subscribe</button>
+                    </div>
+                    <p class="small opacity-50">We respect your privacy. Unsubscribe at any time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-top py-5" id="contact">
+        <div class="container text-center">
+            <div class="mb-3">
+                <a href="index.php" class="text-decoration-none text-muted mx-2 small">Home</a>
+                <a href="recipes.php" class="text-decoration-none text-muted mx-2 small">Recipes</a>
+                <a href="submit-recipe.php" class="text-decoration-none text-muted mx-2 small">Submit</a>
+                <a href="about.php" class="text-decoration-none text-muted mx-2 small">About</a>
+            </div>
+            <p class="text-muted small mb-0">© 2026 RecipeBook. Powered by Culinary Passion & Rajarata University.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

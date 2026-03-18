@@ -1,0 +1,47 @@
+MINI PROJECT PROPOSAL: DIGITAL RECIPE BOOK
+Course: COM 2303 - Web Design
+University: Rajarata University of Sri Lanka
+
+1. SELECTED THEME
+Digital Recipe Book - An interactive web application for culinary enthusiasts.
+
+2. PURPOSE
+To develop a visually stunning and user-friendly platform that allows users to browse, search, and submit recipes. The application focuses on high-quality UX, dynamic interactivity, and responsive design using modern web technologies.
+
+3. FEATURES TO BE IMPLEMENTED
+
+Feature 1 - Dynamic Recipe Search (JavaScript)
+Real-time filtering of recipes on the "Recipes" page. Users can search by title or filter by category without page reloads.
+
+Feature 2 - Dynamic Content Loading (JavaScript)
+A centralized data system that populates recipe details (ingredients, instructions, images) into a dynamic modal window, providing a seamless viewing experience.
+
+Feature 3 - Form Validation (JavaScript)
+Robust validation for recipe submissions, including required field checks, email format validation via Regex, and empty input prevention with user-friendly alerts.
+
+Feature 4 - Interactive Image Slider (Bootstrap)
+A premium homepage carousel highlighting "Featured Recipes" with auto-playing transitions and call-to-action buttons.
+
+Feature 5 - Smooth Scrolling Navigation (JavaScript)
+Enhanced navigation with smooth scroll-to-section behavior and a persistent glassmorphism header.
+
+4. TARGET AUDIENCE
+- Students and Home Cooks
+- Beginners looking for step-by-step guidance
+- Food enthusiasts who want to share their culinary creations
+
+5. TECHNOLOGIES USED
+- HTML5: Semantic page structure
+- CSS3: Custom premium styling, glassmorphism, and HSL color systems
+- Bootstrap 5: Grid system, Carousel, and Layout utilities
+- JavaScript (ES6): Dynamic search logic, form validation, and DOM manipulation
+
+6. PAGE STRUCTURE
+1. Home Page: Hero section, Featured Carousel, "How it Works" guide, and Footer hub.
+2. Recipes Page: Searchable grid of recipe cards with dynamic detail modals.
+3. About Page: Mission statement, "Our Story", and university academic credits.
+4. Submit Recipe Page: A dedicated interface for user-contributed content.
+5. Get Started (Login) Page: A modern authentication portal (Login/Signup).
+
+7. EXPECTED OUTCOME
+A production-ready, fully responsive web application that demonstrates mastery of modern front-end development principles and provides an excellent user experience.
